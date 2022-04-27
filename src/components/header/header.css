@@ -1,0 +1,48 @@
+.header__container{
+    background: black;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+;
+}
+.input__header{
+    padding : 1rem  0 1rem 0.5rem;
+
+    border-radius: 10px;
+    margin: 0 ;
+    width: 35vw;
+    
+    border-style: none;
+
+}
+
+.search__container{
+    position: absolute;
+    background: white;
+    margin-right: 20px;
+    
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon__header{
+    padding-left: 1px;
+    margin:3px;
+    font-size: large;
+    
+}
+input:focus{
+    outline: none;
+}
+h1{
+    color: white;
+    position: absolute;
+    left: 20px;
+
+
+}
