@@ -1,0 +1,25 @@
+.card__container{
+    background: green;
+    height: 300px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+img{
+    height: 50%;
+    overflow: hidden;
+}
+.card__items{
+    align-items: center;
+    
+}
+
+.card{
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.5rem;
+    margin: 10px;
+}
