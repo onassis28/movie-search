@@ -6,9 +6,7 @@
     
     border-radius: 15px;
     margin: 0.2rem;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: row;
+
     
 }
 
@@ -23,18 +21,21 @@ img{
 .card__items{
     align-items: center;
     height: 300px;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
+    
+    
+    
     
 
 }
 
 .card{
+    height: 300px;
+    width: 200px;
     
-
+    
     gap: 5rem;
     margin: 10px;
+
 }
 p{
     margin: 0.2rem;

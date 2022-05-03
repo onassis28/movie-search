@@ -8,46 +8,42 @@ import Card from '../movie card/card'
  
 
 const Header = (props) => {
-    const [search, setSearch]=useState('Home Alone')
-    const handleChange =(e)=>{setSearch(e.target.value)}
+    const [search, setSearch]=useState('avengers')
     const [data, setData]= useState([])
+
+    const handleClick =(e)=>{ 
+      e.preventDefault() 
     useEffect( ()=>{
-        fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
-.then(response=> response.json())
-.then(data=> {setData(data.Search)
-
-
+      fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
+ .then(response=> response.json())
+ .then(data=> {setData(data.Search)
+  
 })
 
-
-
-
-
-    },[search])
-
-    const dataRender =data.map(item=>{
-        return <Card
-        key={item.imbdbID}
-        year ={item.Year}
-        poster={item.Poster}
-        title={item.Title}
-        />
-    })
-    
-
  
+ },[]) }
 
+
+  const handleChange=(e)=>setSearch(e.target.value)
    
-    
+  const dataRender = data.map(item=>{
+    return <Card
+    key={item.imdbID}
+    Key={item.imdbID}
+    year ={item.Year}
+    poster={item.Poster}
+    title={item.Title}
+    /> }
+  
+
   return (
       <>
     <div className='header__container'><h1>Movie Search </h1>
-        <div className='search__container'> <i><BsSearch className='icon__header'/></i><input onChange={handleChange} className='input__header' type="text" placeholder='Search' /></div></div>
-       <section className='dataRender'>{dataRender}</section> 
+        <div className='search__container'> <i><BsSearch className='icon__header'/></i><input onChange={handleChange}  className='input__header' type="text" placeholder='Search' /><button onClick={handleClick}>Search</button></div></div>
+       <section  className='dataRender'>{dataRender}</section> 
         
         </>
   )
 }
 
 export default Header
-
