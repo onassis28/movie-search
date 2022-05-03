@@ -1,25 +1,41 @@
 .card__container{
-    background: green;
+    background: whitesmoke;
     height: 300px;
     width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-}
 
-img{
-    height: 50%;
-    overflow: hidden;
-}
-.card__items{
-    align-items: center;
+    
+    border-radius: 15px;
+    margin: 0.2rem;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: row;
     
 }
 
+img{
+    height: 250px;
+    
+    width: 200px;
+
+    overflow: hidden;
+    border-radius: 15px;
+}
+.card__items{
+    align-items: center;
+    height: 300px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    
+
+}
+
 .card{
-    display: grid;
-    grid-template-columns: auto;
-    gap: 0.5rem;
+    
+
+    gap: 5rem;
     margin: 10px;
+}
+p{
+    margin: 0.2rem;
 }
