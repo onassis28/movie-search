@@ -1,10 +1,10 @@
 .card__container{
     background: whitesmoke;
     height: 300px;
-    width: 200px;
+    width: 220px;
 
     
-    border-radius: 15px;
+    
     margin: 0.2rem;
 
     
@@ -16,11 +16,16 @@ img{
     width: 200px;
 
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 0px;
+    margin: 0 auto;
 }
 .card__items{
     align-items: center;
     height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     
     
     
@@ -31,12 +36,11 @@ img{
 .card{
     height: 300px;
     width: 200px;
-    
-    
     gap: 5rem;
     margin: 10px;
 
 }
 p{
-    margin: 0.2rem;
+    margin: 0.1rem;
+    font-size: 0.8rem;
 }

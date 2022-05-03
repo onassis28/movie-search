@@ -53,3 +53,10 @@ width: 80vw;
 margin: 0 auto;
 
 }
+
+button{
+    background: black;
+    color: white;
+    border-radius: 0.8rem;
+    margin-right: 1rem;
+}

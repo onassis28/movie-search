@@ -10,21 +10,31 @@ import Card from '../movie card/card'
 const Header = (props) => {
     const [search, setSearch]=useState('avengers')
     const [data, setData]= useState([])
+    const handleChange=(e)=>setSearch(e.target.value)
 
     const handleClick =(e)=>{ 
       e.preventDefault() 
-    useEffect( ()=>{
+  
       fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
  .then(response=> response.json())
- .then(data=> {setData(data.Search)
+ .then(data=> setData(data.Search)
   
-})
+)
 
  
- },[]) }
+  }
+  useEffect( ()=>{
+    fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
+.then(response=> response.json())
+.then(data=> setData(data.Search)
+
+)
 
 
-  const handleChange=(e)=>setSearch(e.target.value)
+},[]) 
+
+
+  
    
   const dataRender = data.map(item=>{
     return <Card
@@ -33,7 +43,7 @@ const Header = (props) => {
     year ={item.Year}
     poster={item.Poster}
     title={item.Title}
-    /> }
+    /> })
   
 
   return (
