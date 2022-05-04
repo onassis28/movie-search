@@ -1,5 +1,5 @@
 .carddetails__container{
-    background: whitesmoke;
+    background: black;
     height: 300px;
     width: 220px;
 
@@ -10,21 +10,14 @@
     
 }
 
-img{
-    height: 250px;
-    
-    width: 200px;
 
-    overflow: hidden;
-    border-radius: 0px;
-    margin: 0 auto;
-}
+
 .carddetails__items{
-    align-items: center;
+    
     height: 300px;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+
     flex-direction: column;
     
     
@@ -35,12 +28,14 @@ img{
 
 .card__details{
     height: 300px;
-    width: 300px;
+    width: 220px;
     gap: 5rem;
     margin: 10px;
+    
 
 }
-p{
-    margin: 0.1rem;
-    font-size: 0.8rem;
+.carddetails__items>p{
+    margin: 0.3rem;
+    font-size: 0.9rem;
+    color: white;
 }
