@@ -18,29 +18,36 @@ const Header = (props) => {
   
       fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
  .then(response=> response.json())
- .then(data=> setData(data.Search)
+ .then(data=> {
+   if(data.Error){
+     throw Error('this is bad')
+   }
+   
+  setError(null)
+  setData(data.Search)}
   
-)
+).catch(err=>setError(err.message))
 
  
   }
   useEffect( ()=>{
     fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
-.then(response=>{ 
-  if (!response.ok){
-    throw Error('could not fetch data')
+.then(response=> response.json())
+.then(data=> {
+  if(data.Error){
+    throw Error('this is bad')
   }
-  response.json()})
-.then(data=> {setData(data.Search)
-console.log(data)
+  setData(data.Search)
+  console.log(data)
+
 })
-.catch(err=> {
-  setError(err.message)
+
+  
 
 
 
-}
-)
+
+
 
 
 
@@ -67,7 +74,7 @@ console.log(data)
       <>
     <div className='header__container'><h1>Movie Search </h1>
         <div className='search__container'> <i><BsSearch className='icon__header'/></i><input onChange={handleChange}  className='input__header' type="text" placeholder='Search' /><button onClick={handleClick}>Search</button></div></div>
-       {error? <h1>{error}</h1>: <section  className='dataRender'>{dataRender}</section>}
+       {error? <h1>Cant find the movie with the search term</h1>: <section  className='dataRender'>{dataRender}</section>}
         
         </>
   )

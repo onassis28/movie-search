@@ -11,13 +11,12 @@ const card = (props)=>{
     const handledetails=(e)=>{
       e.preventDefault() 
       setShow(prev=>!prev)
-         console.log(Key)
+         
        
   
       fetch(`http://www.omdbapi.com/?i=${Key}&apikey=d31e74bc`)
  .then(response=> response.json())
  .then(data=>{ setData(data)
-  return console.log(data)
  }
 )
 
@@ -38,7 +37,7 @@ const handleClick=(e)=>{
         <p> Year: {props.year}</p>
         </div>
         </div>
-        </div>: data? <Details writer={data.Writer} country={data.Country} awards={data.Awards} released={data.Released} year={data.Year} click={handleClick} title={data.Title}/>:'Loading'
+        </div>: data? <Details writer={data.Writer} country={data.Country} awards={data.Awards} released={data.Released} year={data.Year} click={handleClick} title={data.Title}/>:<h1>Loading</h1>
   )
 }
 
