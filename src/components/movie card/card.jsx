@@ -37,7 +37,7 @@ const handleClick=(e)=>{
         <p> Year: {props.year}</p>
         </div>
         </div>
-        </div>: data? <Details writer={data.Writer} country={data.Country} awards={data.Awards} released={data.Released} year={data.Year} click={handleClick} title={data.Title}/>:<h1>Loading</h1>
+        </div>: data? <Details writer={data.Writer} country={data.Country} awards={data.Awards} released={data.Released} year={data.Year} click={handleClick} title={data.Title}/>:<h1>Loading...</h1>
   )
 }
 
