@@ -26,24 +26,9 @@ const Header = () => {
           }
         })
         .catch((err) => setError(err.message));
-    }, 2000);
+    }, 3000);
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
-      .then((response) => response.json())
-      .then((dat) => {
-        if (dat.Error) {
-          throw Error('Cant find the movie with the search term ');
-        }
-
-        setError(null);
-        setData(dat.Search);
-      })
-      .catch((err) => setError(err.message));
-  };
   useEffect(() => {
     fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
       .then((response) => response.json())
@@ -83,7 +68,6 @@ const Header = () => {
             type="text"
             placeholder="Search"
           />
-          <button onClick={handleClick}>Search</button>
         </div>
       </div>
       {error ? (
