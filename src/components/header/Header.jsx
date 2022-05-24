@@ -1,83 +1,79 @@
-import React from 'react'
-import './header.css'
-import {BsSearch} from 'react-icons/bs'
-import { useState, useEffect } from 'react'
-import Card from '../movie card/card'
+/* eslint-disable react/button-has-type */
+import React, { useState, useEffect } from 'react';
+import './header.css';
+import { BsSearch } from 'react-icons/bs';
+import Card from '../movie card/card';
 
-    
- 
+function Header() {
+  const [search, setSearch] = useState('avengers');
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const handleChange = (e) => setSearch(e.target.value);
 
-const Header = (props) => {
-    const [search, setSearch]=useState('avengers')
-    const [data, setData]= useState([])
-    const[error,setError]=useState(null)
-    const handleChange=(e)=>setSearch(e.target.value)
+  const handleClick = (e) => {
+    e.preventDefault();
 
-    const handleClick =(e)=>{ 
-      e.preventDefault() 
-  
-      fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
- .then(response=> response.json())
- .then(data=> {
-   if(data.Error){
-     throw Error('this is bad')
-   }
-   
-  setError(null)
-  setData(data.Search)}
-  
-).catch(err=>setError(err.message))
-
- 
-  }
-  useEffect( ()=>{
     fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
-.then(response=> response.json())
-.then(data=> {
-  if(data.Error){
-    throw Error('this is bad')
-  }
-  setData(data.Search)
-  console.log(data)
+      .then((response) => response.json())
+      .then((dat) => {
+        if (dat.Error) {
+          throw Error('this is bad');
+        }
 
-})
+        setError(null);
+        setData(dat.Search);
+      })
+      .catch((err) => setError(err.message));
+  };
+  useEffect(() => {
+    fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
+      .then((response) => response.json())
+      .then((dat) => {
+        if (dat.Error) {
+          throw Error('this is bad');
+        }
 
-  
+        setData(dat.Search);
+      });
+  }, []);
 
-
-
-
-
-
-
-
-
-
-
-},[]) 
-
-
-  
-   
-  const dataRender = data.map(item=>{
-    return <Card
-    key={item.imdbID}
-    Key={item.imdbID}
-    year ={item.Year}
-    poster={item.Poster}
-    title={item.Title}
-    /> })
-  
+  const dataRender = data.map((item) => {
+    return (
+      <Card
+        key={item.imdbID}
+        term={item.imdbID}
+        year={item.Year}
+        poster={item.Poster}
+        title={item.Title}
+      />
+    );
+  });
 
   return (
-    
-      <>
-    <div className='header__container'><h1>Movie Search </h1>
-        <div className='search__container'> <i><BsSearch className='icon__header'/></i><input onChange={handleChange}  className='input__header' type="text" placeholder='Search' /><button onClick={handleClick}>Search</button></div></div>
-       {error? <h1>Cant find the movie with the search term</h1>: <section  className='dataRender'>{dataRender}</section>}
-        
-        </>
-  )
+    <>
+      <div className="header__container">
+        <h1>Movie Search </h1>
+        <div className="search__container">
+          {' '}
+          <i>
+            <BsSearch className="icon__header" />
+          </i>
+          <input
+            onChange={handleChange}
+            className="input__header"
+            type="text"
+            placeholder="Search"
+          />
+          <button onClick={handleClick}>Search</button>
+        </div>
+      </div>
+      {error ? (
+        <h1>Cant find the movie with the search term</h1>
+      ) : (
+        <section className="dataRender">{dataRender}</section>
+      )}
+    </>
+  );
 }
 
-export default Header
+export default Header;

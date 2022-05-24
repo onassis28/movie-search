@@ -1,18 +1,8 @@
-import React from 'react'
-import Header from './components/header/Header'
-import Card from './components/movie card/card'
+import React from 'react';
+import Header from './components/header/Header';
 
-const App = () => {
-  return (
-    <>  
-    
-   <Header/>
-    
-    
-    
-    </>
-  
-  )
+function App() {
+  return <Header />;
 }
 
-export default App
+export default App;
