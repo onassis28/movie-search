@@ -1,14 +1,33 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/function-component-definition */
 /* eslint-disable react/button-has-type */
 import React, { useState, useEffect } from 'react';
 import './header.css';
 import { BsSearch } from 'react-icons/bs';
 import Card from '../movie card/card';
 
-function Header() {
+const Header = () => {
   const [search, setSearch] = useState('avengers');
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const handleChange = (e) => setSearch(e.target.value);
+  /* const handleChange = (e) => setSearch(e.target.value); */
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    const timeOut = setTimeout(() => {
+      fetch(`http://www.omdbapi.com/?s=${search}&apikey=d31e74bc`)
+        .then((response) => response.json())
+        .then((dat) => {
+          if (dat.Error) {
+            throw Error('Cant find the movie with the search term ');
+          } else {
+            setError(null);
+            setData(dat.Search);
+            clearTimeout(timeOut);
+          }
+        })
+        .catch((err) => setError(err.message));
+    }, 2000);
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -17,7 +36,7 @@ function Header() {
       .then((response) => response.json())
       .then((dat) => {
         if (dat.Error) {
-          throw Error('this is bad');
+          throw Error('Cant find the movie with the search term ');
         }
 
         setError(null);
@@ -74,6 +93,6 @@ function Header() {
       )}
     </>
   );
-}
+};
 
 export default Header;
